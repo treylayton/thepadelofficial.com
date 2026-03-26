@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Padel Official — Every Point. Glass Court Ready.</title>
+<meta name="description" content="The Padel Official: 22+ decision trees for 2026 FIP Rules of Padel. Instant rulings on wall play, serving, scoring, and out-of-court play. Works offline.">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--bg:#000000;--card:#1E0A0A;--card-border:#332020;--surface:#0A0000;
+--red:#EF4444;--red-muted:#DC2626;--red-dim:rgba(239,68,68,0.12);
+--text:#F0F2F5;--text-secondary:#A08888;--text-faint:#6B5555;--divider:#332020;
+--btn-hover:#F87171;
+--max-w:720px;
+}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--red);text-decoration:none}
+a:hover{color:var(--btn-hover)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,0,0,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--divider);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:center}
+.nav-inner{max-width:var(--max-w);width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:10px;font-size:15px;letter-spacing:0.5px}
+.nav-brand svg{width:28px;height:28px}
+.nav-brand .app-the-padel{color:var(--red);font-weight:700;letter-spacing:2px}
+.nav-brand .app-official{color:#fff;font-weight:800}
+.nav-links{display:flex;gap:20px;font-size:13px}
+.nav-links a{color:var(--text-secondary)}
+.nav-links a:hover{color:var(--text)}
+
+/* SECTIONS */
+.container{max-width:var(--max-w);margin:0 auto;padding:0 24px}
+section{padding:80px 0}
+section:first-of-type{padding-top:120px}
+.divider{height:1px;background:var(--divider);margin:0}
+
+/* HERO */
+.hero{text-align:center;padding-top:140px;padding-bottom:80px}
+.hero-icon{margin-bottom:32px}
+.hero-icon svg{width:100px;height:100px}
+.hero-title{font-size:14px;letter-spacing:3px;margin-bottom:8px}
+.hero-title .t-red{color:var(--red);font-weight:700}
+.hero-title .t-white{color:#fff;font-weight:800}
+.hero-tagline{font-size:clamp(28px,5vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;color:#fff}
+.hero-sub{font-size:17px;color:var(--text-secondary);max-width:440px;margin:0 auto 36px}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;font-weight:600;font-size:15px;padding:14px 32px;border-radius:12px;border:none;cursor:pointer;transition:background 0.2s}
+.btn:hover{background:var(--btn-hover);color:#fff}
+.btn-outline{background:transparent;border:1px solid var(--card-border);color:var(--text-secondary);font-size:13px;padding:10px 20px;border-radius:10px}
+.btn-outline:hover{border-color:var(--red);color:var(--text)}
+.hero-buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* PROBLEM */
+.problem{background:var(--surface);border-top:1px solid var(--divider);border-bottom:1px solid var(--divider)}
+.problem-headline{font-size:clamp(22px,4vw,32px);font-weight:700;line-height:1.3;margin-bottom:20px;color:#fff}
+.problem-headline em{color:var(--red);font-style:normal}
+.problem-body{color:var(--text-secondary);font-size:16px;line-height:1.7;max-width:560px}
+
+/* HOW IT WORKS */
+.steps{display:grid;gap:24px;margin-top:40px}
+.step{display:flex;gap:20px;align-items:flex-start}
+.step-num{flex-shrink:0;width:40px;height:40px;border-radius:50%;background:var(--red-dim);color:var(--red);font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center;border:1px solid var(--card-border)}
+.step-content h3{font-size:16px;font-weight:700;margin-bottom:4px;color:#fff}
+.step-content p{font-size:14px;color:var(--text-secondary)}
+
+/* CARD GRID */
+.section-label{font-size:12px;text-transform:uppercase;letter-spacing:2.5px;color:var(--red);font-weight:600;margin-bottom:8px}
+.section-title{font-size:clamp(22px,4vw,32px);font-weight:800;color:#fff;margin-bottom:12px}
+.section-sub{font-size:15px;color:var(--text-secondary);margin-bottom:40px;max-width:500px}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:24px;transition:border-color 0.2s}
+.card:hover{border-color:var(--red-muted)}
+.card-icon{font-size:24px;margin-bottom:12px}
+.card h3{font-size:15px;font-weight:700;margin-bottom:6px;color:#fff}
+.card p{font-size:13px;color:var(--text-secondary);line-height:1.5}
+
+/* ON DEVICE */
+.on-device{background:var(--surface);border-top:1px solid var(--divider);border-bottom:1px solid var(--divider);text-align:center}
+
+/* PRIVACY STRIP */
+.privacy-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.priv-item{background:var(--card);border:1px solid var(--card-border);border-radius:12px;padding:20px;text-align:center}
+.priv-item .pi-icon{font-size:22px;margin-bottom:8px}
+.priv-item h4{font-size:14px;font-weight:700;color:#fff;margin-bottom:4px}
+.priv-item p{font-size:12px;color:var(--text-secondary)}
+
+/* QUOTE */
+.quote-section{text-align:center;padding:60px 0}
+.quote-text{font-size:clamp(20px,3.5vw,28px);font-weight:700;color:#fff;font-style:italic;max-width:500px;margin:0 auto}
+.quote-text::before{content:"\201C"}
+.quote-text::after{content:"\201D"}
+
+/* PRICING */
+.pricing{text-align:center}
+.price-card{background:var(--card);border:1px solid var(--card-border);border-radius:18px;padding:40px 32px;max-width:400px;margin:0 auto}
+.price-amount{font-size:48px;font-weight:800;color:#fff}
+.price-amount span{font-size:18px;font-weight:400;color:var(--text-secondary)}
+.price-trial{color:var(--red);font-weight:600;font-size:14px;margin:8px 0 4px}
+.price-note{font-size:13px;color:var(--text-faint);margin-bottom:24px}
+.price-card .btn{width:100%;justify-content:center;margin-bottom:12px}
+.price-eula{font-size:11px;color:var(--text-faint)}
+.price-eula a{color:var(--text-faint);text-decoration:underline}
+
+/* FOOTER */
+footer{border-top:1px solid var(--divider);padding:60px 0 40px;text-align:center}
+.footer-prompt{font-size:clamp(18px,3vw,24px);font-weight:700;color:#fff;margin-bottom:4px}
+.footer-prompt em{color:var(--red);font-style:normal}
+.footer-answer{font-size:15px;color:var(--text-secondary);margin-bottom:32px}
+.footer-links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:24px;font-size:13px}
+.footer-links a{color:var(--text-faint)}
+.footer-links a:hover{color:var(--text)}
+.footer-copy{font-size:12px;color:var(--text-faint)}
+
+@media(max-width:600px){
+  .nav-links{display:none}
+  .privacy-strip{grid-template-columns:1fr}
+  .card-grid{grid-template-columns:1fr}
+  section{padding:60px 0}
+  .hero{padding-top:110px;padding-bottom:60px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+<div class="nav-inner">
+<div class="nav-brand">
+<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="40" cy="40" r="36" stroke="#EF4444" stroke-width="4" fill="none"/>
+<circle cx="40" cy="40" r="28" stroke="#EF4444" stroke-width="2" fill="none"/>
+<circle cx="28" cy="28" r="4" fill="#EF4444" opacity="0.5"/>
+<circle cx="52" cy="28" r="4" fill="#EF4444" opacity="0.5"/>
+<circle cx="28" cy="52" r="4" fill="#EF4444" opacity="0.5"/>
+<circle cx="52" cy="52" r="4" fill="#EF4444" opacity="0.5"/>
+<circle cx="40" cy="22" r="3" fill="#EF4444" opacity="0.4"/>
+<circle cx="40" cy="58" r="3" fill="#EF4444" opacity="0.4"/>
+<circle cx="22" cy="40" r="3" fill="#EF4444" opacity="0.4"/>
+<circle cx="58" cy="40" r="3" fill="#EF4444" opacity="0.4"/>
+<circle cx="40" cy="40" r="4" fill="#EF4444" opacity="0.5"/>
+<line x1="40" y1="4" x2="40" y2="76" stroke="#EF4444" stroke-width="1.5" opacity="0.3"/>
+<rect x="36" y="60" width="8" height="18" rx="4" fill="#EF4444" opacity="0.6"/>
+</svg>
+<span><span class="app-the-padel">THE PADEL</span> <span class="app-official">OFFICIAL</span></span>
+</div>
+<div class="nav-links">
+<a href="#features">Features</a>
+<a href="#pricing">Pricing</a>
+<a href="privacy.html">Privacy</a>
+<a href="support.html">Support</a>
+</div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="container">
+<div class="hero-icon">
+<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="40" cy="40" r="36" stroke="#EF4444" stroke-width="4" fill="none"/>
+<circle cx="40" cy="40" r="28" stroke="#EF4444" stroke-width="2" fill="none"/>
+<circle cx="28" cy="28" r="4" fill="#EF4444" opacity="0.5"/>
+<circle cx="52" cy="28" r="4" fill="#EF4444" opacity="0.5"/>
+<circle cx="28" cy="52" r="4" fill="#EF4444" opacity="0.5"/>
+<circle cx="52" cy="52" r="4" fill="#EF4444" opacity="0.5"/>
+<circle cx="40" cy="22" r="3" fill="#EF4444" opacity="0.4"/>
+<circle cx="40" cy="58" r="3" fill="#EF4444" opacity="0.4"/>
+<circle cx="22" cy="40" r="3" fill="#EF4444" opacity="0.4"/>
+<circle cx="58" cy="40" r="3" fill="#EF4444" opacity="0.4"/>
+<circle cx="40" cy="40" r="4" fill="#EF4444" opacity="0.5"/>
+<line x1="40" y1="4" x2="40" y2="76" stroke="#EF4444" stroke-width="1.5" opacity="0.3"/>
+<rect x="36" y="60" width="8" height="18" rx="4" fill="#EF4444" opacity="0.6"/>
+</svg>
+</div>
+<div class="hero-title"><span class="t-red">THE PADEL</span> <span class="t-white">OFFICIAL</span></div>
+<h1 class="hero-tagline">Every point.<br>Glass court ready.</h1>
+<p class="hero-sub">22+ interactive decision trees built on the 2026 FIP Rules of Padel. Instant rulings, zero arguments.</p>
+<div class="hero-buttons">
+<a href="#pricing" class="btn">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+Download on the App Store
+</a>
+<a href="suggestions.html" class="btn btn-outline">Suggest a Feature</a>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROBLEM -->
+<section class="problem">
+<div class="container">
+<h2 class="problem-headline">Four players. <em>Glass walls. Zero referee.</em></h2>
+<p class="problem-body">The ball ricochets off the back glass, clips the wire mesh, and lands in. Or does it? One player says it's out. Another says play on. Nobody's sure, and the point is already gone. In padel, the walls aren't just boundaries — they're part of the game. And without a ref, every glass-wall rally is one bad call away from an argument.</p>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- HOW IT WORKS -->
+<section>
+<div class="container">
+<p class="section-label">How It Works</p>
+<h2 class="section-title">Three taps to the right call</h2>
+<p class="section-sub">No searching. No scrolling through rulebooks. Just answer the questions.</p>
+<div class="steps">
+<div class="step">
+<div class="step-num">1</div>
+<div class="step-content">
+<h3>Pick the situation</h3>
+<p>Wall play, serve dispute, scoring confusion, out-of-court play — choose what happened on court.</p>
+</div>
+</div>
+<div class="step">
+<div class="step-num">2</div>
+<div class="step-content">
+<h3>Answer yes-or-no questions</h3>
+<p>The decision tree walks you through exactly what the 2026 FIP rules say, step by step.</p>
+</div>
+</div>
+<div class="step">
+<div class="step-num">3</div>
+<div class="step-content">
+<h3>Get the ruling</h3>
+<p>A clear, shareable verdict with the official rule citation. No more guessing behind the glass.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ON DEVICE -->
+<section class="on-device">
+<div class="container">
+<p class="section-label">On-Device Processing</p>
+<h2 class="section-title">Works without Wi-Fi.<br>Works without cell service.</h2>
+<p class="section-sub" style="margin-left:auto;margin-right:auto">Every decision tree and ruling runs entirely on your device. No internet connection needed. No data leaves your phone. Ever.</p>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FEATURES -->
+<section id="features">
+<div class="container">
+<p class="section-label">Features</p>
+<h2 class="section-title">Built for the glass court</h2>
+<p class="section-sub">Everything you need to settle disputes and play by the book.</p>
+<div class="card-grid">
+<div class="card">
+<div class="card-icon">&#x1F333;</div>
+<h3>Decision Trees</h3>
+<p>22+ interactive flows that guide you to the correct ruling, step by step.</p>
+</div>
+<div class="card">
+<div class="card-icon">&#x1F9F1;</div>
+<h3>Wall Play Rules</h3>
+<p>Glass, mesh, back wall, side wall — know exactly what's in and what's out.</p>
+</div>
+<div class="card">
+<div class="card-icon">&#x1F3BE;</div>
+<h3>Serving Rules</h3>
+<p>Foot faults, let serves, service boxes — every serve scenario covered.</p>
+</div>
+<div class="card">
+<div class="card-icon">&#x1F4CA;</div>
+<h3>Scoring</h3>
+<p>Advantage sets, tiebreaks, golden point — never lose track of the score.</p>
+</div>
+<div class="card">
+<div class="card-icon">&#x1F6AA;</div>
+<h3>Out-of-Court Play</h3>
+<p>Ball leaves the cage? Know when you can chase it and when the point is over.</p>
+</div>
+<div class="card">
+<div class="card-icon">&#x1F9E0;</div>
+<h3>Apple Intelligence</h3>
+<p>Ask questions in natural language and get rule-backed answers instantly.</p>
+</div>
+<div class="card">
+<div class="card-icon">&#x1F4E4;</div>
+<h3>Share Rulings</h3>
+<p>Send the official ruling to your group chat. End the argument for good.</p>
+</div>
+<div class="card">
+<div class="card-icon">&#x1F4F4;</div>
+<h3>Works Offline</h3>
+<p>No signal at the club? No problem. Everything runs on-device.</p>
+</div>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRIVACY -->
+<section>
+<div class="container" style="text-align:center">
+<p class="section-label">Privacy</p>
+<h2 class="section-title">Your data stays on your device</h2>
+<p class="section-sub" style="margin-left:auto;margin-right:auto">We don't collect it. We don't store it. We don't sell it.</p>
+<div class="privacy-strip">
+<div class="priv-item">
+<div class="pi-icon">&#x1F6AB;</div>
+<h4>No Data Collected</h4>
+<p>Zero analytics, zero tracking, zero telemetry.</p>
+</div>
+<div class="priv-item">
+<div class="pi-icon">&#x1F4F1;</div>
+<h4>On-Device Only</h4>
+<p>All processing happens locally on your iPhone or iPad.</p>
+</div>
+<div class="priv-item">
+<div class="pi-icon">&#x1F464;</div>
+<h4>No Accounts</h4>
+<p>No sign-ups, no logins, no personal information required.</p>
+</div>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- QUOTE -->
+<section class="quote-section">
+<div class="container">
+<p class="quote-text">The best ref is the one behind the glass.</p>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRICING -->
+<section id="pricing" class="pricing">
+<div class="container">
+<p class="section-label">Pricing</p>
+<h2 class="section-title">One subscription. Every ruling.</h2>
+<div class="price-card">
+<div class="price-amount">$14.99<span>/year</span></div>
+<p class="price-trial">7-day free trial</p>
+<p class="price-note">Less than a grip overgrip pack per month</p>
+<a href="#" class="btn">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+Start Free Trial
+</a>
+<p class="price-eula">Payment handled by the App Store. <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Apple Standard EULA</a></p>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="container">
+<p class="footer-prompt">Did that ball go <em>over</em> the glass?</p>
+<p class="footer-answer">Let's find out.</p>
+<div class="footer-links">
+<a href="privacy.html">Privacy Policy</a>
+<a href="support.html">Support</a>
+<a href="suggestions.html">Suggestions</a>
+<a href="mailto:support@thepadelofficial.com">Contact</a>
+</div>
+<p class="footer-copy">&copy; 2026 Centrifical, Inc. All rights reserved.</p>
+</div>
+</footer>
+
+</body>
+</html>
